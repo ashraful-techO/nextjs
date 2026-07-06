@@ -59,10 +59,10 @@ interface Navbar1Props {
 
 const Navbar = ({
   logo = {
-    url: "https://www.shadcnblocks.com",
+    url: "/",
     src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg",
     alt: "logo",
-    title: "Shadcnblocks.com",
+    title: "ashraful-tech",
   },
   menu = [
     { title: "Home", url: "/" },
@@ -92,12 +92,13 @@ const Navbar = ({
 }: Navbar1Props) => {
   return (
     <section className={cn("py-4", className)}>
-      <div className="container">
+      <div className="container mx-auto px-4">
         {/* Desktop Menu */}
         <nav className="hidden items-center justify-between lg:flex">
           <div className="flex items-center gap-6">
             {/* Logo */}
-            <a href={logo.url} className="flex items-center gap-2">
+            {/* <a href={logo.url} className="flex items-center gap-2"> */}
+            <Link href={logo.url} className="flex items-center gap-2">
               <img
                 src={logo.src}
                 className="max-h-8 dark:invert"
@@ -106,7 +107,7 @@ const Navbar = ({
               <span className="text-lg font-semibold tracking-tighter">
                 {logo.title}
               </span>
-            </a>
+            </Link>
             <div className="flex items-center">
               <NavigationMenu>
                 <NavigationMenuList>
@@ -117,10 +118,12 @@ const Navbar = ({
           </div>
           <div className="flex gap-2">
             <Button asChild variant="outline" size="sm">
-              <a href={auth.login.url}>{auth.login.title}</a>
+              {/* <a href={auth.login.url}>{auth.login.title}</a> */}
+              <Link href={auth.login.url}>{auth.login.title}</Link>
             </Button>
             <Button asChild size="sm">
-              <a href={auth.signup.url}>{auth.signup.title}</a>
+              {/* <a href={auth.signup.url}>{auth.signup.title}</a> */}
+              <Link href={auth.signup.url}>{auth.signup.title}</Link>
             </Button>
           </div>
         </nav>
@@ -182,20 +185,23 @@ const Navbar = ({
 };
 
 const renderMenuItem = (item: MenuItem) => {
-  // if (item.items) {
-  //   return (
-  //     <NavigationMenuItem key={item.title}>
-  //       <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
-  //       <NavigationMenuContent className="bg-popover text-popover-foreground">
-  //         {item.items.map((subItem) => (
-  //           <NavigationMenuLink asChild key={subItem.title} className="w-80">
-  //             <SubMenuLink item={subItem} />
-  //           </NavigationMenuLink>
-  //         ))}
-  //       </NavigationMenuContent>
-  //     </NavigationMenuItem>
-  //   );
-  // }
+  if (item.items) {
+    return (
+      <NavigationMenuItem key={item.title}>
+        <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
+        <NavigationMenuContent className="bg-popover text-popover-foreground">
+          {item.items.map((subItem) => (
+            <NavigationMenuLink asChild key={subItem.title} className="w-80">
+              {/* <SubMenuLink item={subItem} /> */}
+              <Link href={subItem.url}>
+                {subItem.title}
+              </Link>
+            </NavigationMenuLink>
+          ))}
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+    );
+  }
 
   return (
     <NavigationMenuItem key={item.title}>

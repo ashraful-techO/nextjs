@@ -2,8 +2,8 @@ import React from "react";
 
 function BranchPage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center">
-      BranchPage
+    <div className="container mx-auto px-4">
+      Branch Page
     </div>
   );
 }
