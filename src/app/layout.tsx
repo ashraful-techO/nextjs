@@ -118,10 +118,10 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased overflow-hidden`}
     >
       <body
-        className="min-h-full flex flex-col font-sans"
+        className="h-screen font-sans border border-green-500 dark:border-gray-800"
         suppressHydrationWarning
       >
         <ThemeProvider
@@ -129,10 +129,13 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+
         >
           <Navbar />
           <Suspense fallback={<Loading />}>
-            <main className="flex-1">{children}</main>
+            <main className="h-full flex-1 border border-gray-200 dark:border-gray-800">
+              {children}
+            </main>
           </Suspense>
         </ThemeProvider>
       </body>
