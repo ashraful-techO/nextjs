@@ -26,6 +26,7 @@ import {
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { ModeToggle } from "./ModeToggle";
 
 interface MenuItem {
   title: string;
@@ -82,7 +83,6 @@ const Navbar = ({
         },
       ],
     },
-  
   ],
   auth = {
     login: { title: "Login", url: "#" },
@@ -117,6 +117,7 @@ const Navbar = ({
             </div>
           </div>
           <div className="flex gap-2">
+            <ModeToggle />
             <Button asChild variant="outline" size="sm">
               {/* <a href={auth.login.url}>{auth.login.title}</a> */}
               <Link href={auth.login.url}>{auth.login.title}</Link>
@@ -193,9 +194,7 @@ const renderMenuItem = (item: MenuItem) => {
           {item.items.map((subItem) => (
             <NavigationMenuLink asChild key={subItem.title} className="w-80">
               {/* <SubMenuLink item={subItem} /> */}
-              <Link href={subItem.url}>
-                {subItem.title}
-              </Link>
+              <Link href={subItem.url}>{subItem.title}</Link>
             </NavigationMenuLink>
           ))}
         </NavigationMenuContent>
@@ -206,11 +205,11 @@ const renderMenuItem = (item: MenuItem) => {
   return (
     <NavigationMenuItem key={item.title}>
       <NavigationMenuLink
-      asChild
+        asChild
         href={item.url}
         className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-muted hover:text-accent-foreground"
       >
-       <Link href={item.url}> {item.title}</Link>
+        <Link href={item.url}> {item.title}</Link>
       </NavigationMenuLink>
     </NavigationMenuItem>
   );

@@ -37,11 +37,13 @@
 //   );
 // }
 
-
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/navbar";
+import { Navbar } from "@/components/layouts/navbar";
+import { ThemeProvider } from "next-themes";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -118,9 +120,21 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans" suppressHydrationWarning>
-        <Navbar />
-        <main className="flex-1">{children}</main>
+      <body
+        className="min-h-full flex flex-col font-sans"
+        suppressHydrationWarning
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navbar />
+          <Suspense fallback={<Loading />}>
+            <main className="flex-1">{children}</main>
+          </Suspense>
+        </ThemeProvider>
       </body>
     </html>
   );
