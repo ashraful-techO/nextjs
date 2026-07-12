@@ -17,6 +17,7 @@ import { SearchForm } from "./search-form";
 import Link from "next/link";
 import { adminRoutes } from "@/routes/adminRoutes";
 import { userRoutes } from "@/routes/userRoutes";
+import { Route } from "@/types";
 
 // This is sample data.
 const data = {
@@ -47,7 +48,7 @@ export function AppSidebar({
 }: {
   user: { role: string } & React.ComponentProps<typeof Sidebar>;
 }) {
-  let routes = [];
+  let routes: Route[] = [];
 
   switch (user.role) {
     case "admin":
