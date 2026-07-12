@@ -26,7 +26,7 @@ export default function Page({
   user: React.ReactNode;
 }) {
   const userInfo = {
-    role: "admin",
+    role: "user",
   };
 
   const routes = userRoutes;
