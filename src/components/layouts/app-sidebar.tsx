@@ -15,6 +15,8 @@ import {
 import { VersionSwitcher } from "./version-switcher";
 import { SearchForm } from "./search-form";
 import Link from "next/link";
+import { adminRoutes } from "@/routes/adminRoutes";
+import { userRoutes } from "@/routes/userRoutes";
 
 // This is sample data.
 const data = {
@@ -31,7 +33,7 @@ const data = {
         },
         {
           title: "User-Dashboard",
-          url: "/user-dashboard",
+          url: "/dashboard",
           isActive: true,
         },
       ],
@@ -39,11 +41,33 @@ const data = {
   ],
 };
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({
+  user,
+  ...props
+}: {
+  user: { role: string } & React.ComponentProps<typeof Sidebar>;
+}) {
+  let routes = [];
+
+  switch (user.role) {
+    case "admin":
+      routes = adminRoutes;
+      break;
+    case "user":
+      routes = userRoutes;
+      break;
+
+    default:
+      routes = [];
+      break;
+  }
+
+  console.log({ routes });
+
   return (
     <Sidebar {...props}>
       <SidebarContent>
-        {data.navMain.map((item) => (
+        {routes.map((item) => (
           <SidebarGroup key={item.title}>
             <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
             <SidebarGroupContent>
