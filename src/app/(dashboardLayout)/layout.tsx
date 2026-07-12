@@ -14,6 +14,8 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 
+import {userRoutes} from "@/routes/userRoutes";
+
 export default function Page({
   children,
   admin,
@@ -27,6 +29,9 @@ export default function Page({
     role: "admin",
   };
 
+  const routes = userRoutes;
+  console.log({ routes });
+
   return (
     <SidebarProvider>
       <AppSidebar user={userInfo} />
@@ -39,19 +44,18 @@ export default function Page({
           />
           <Breadcrumb>
             <BreadcrumbList>
-              <BreadcrumbItem className="hidden md:block">
-                <BreadcrumbLink href="#">Build Your Application</BreadcrumbLink>
-              </BreadcrumbItem>
+            <BreadcrumbItem>
+            Test
+            </BreadcrumbItem>
+           
               <BreadcrumbSeparator className="hidden md:block" />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-              </BreadcrumbItem>
+
             </BreadcrumbList>
           </Breadcrumb>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
-          {/* {admin} {user} */}
           {userInfo.role === "admin" ? admin : user}
+          {children}
         </div>
       </SidebarInset>
     </SidebarProvider>

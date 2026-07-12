@@ -11,4 +11,19 @@ export const userRoutes : Route[] = [
       },
     ],
   },
+    {
+    title: "🏠",
+    items:[
+      {
+        title: "Home",
+        url: "/",
+        isActive: true,
+      },
+      {
+        title: "Test",
+        url: "/test",
+        isActive: true,
+      }
+    ]
+  }
 ];

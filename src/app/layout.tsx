@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   description: "A short, accurate description of what your app does.",
   applicationName: "ashraful-tech",
   keywords: ["your", "keywords", "here"],
-  authors: [{ name: "Your Name" }],
+  authors: [{ name: "Md Ashraful Islam" }],
   robots: {
     index: true,
     follow: true,
