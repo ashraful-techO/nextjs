@@ -1,3 +1,6 @@
 allowBuilds:
+  '@prisma/engines': false
+  inotify: false
+  prisma: false
   sharp: false
   unrs-resolver: false
