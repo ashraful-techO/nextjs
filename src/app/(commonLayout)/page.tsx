@@ -10,7 +10,9 @@ import Image from "next/image";
 export default async function Home() {
   // const { data, error } = await userService.getSession();
 
-  const { data } = await blogService.getBlogPost();
+  const { data } = await blogService.getBlogPost({
+    isFeatured: true,
+  });
 
   console.log(data?.data);
 
