@@ -1,5 +1,6 @@
 import { env } from "@/env";
 import { error } from "console";
+import next from "next";
 
 const API_URL = env.API_URL;
 
@@ -31,14 +32,14 @@ export const blogService = {
         });
       }
 
-      const config: RequestInit ={};
+      const config: RequestInit = {};
 
-      if(options?.cache){
+      if (options?.cache) {
         config.cache = options?.cache;
       }
 
-      if(options?.revalidate){
-        config.next = {revalidate: options.revalidate}
+      if (options?.revalidate) {
+        config.next = { revalidate: options.revalidate };
       }
 
       // console.log(url.toString());
@@ -49,6 +50,18 @@ export const blogService = {
       return { data: data, error: null };
     } catch (error) {
       return { data: null, error: { message: "Something went wrong" } };
+    }
+  },
+
+  getBlogById: async function (id: string) {
+    try {
+      const res = await fetch(`${API_URL}/posts/${id}`);
+
+      const data = await res.json();
+
+      return { data: data, error: null };
+    } catch (error) {
+      return { data: null, error: "something went wrong" };
     }
   },
 };

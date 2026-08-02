@@ -12,11 +12,11 @@ export default async function Home() {
 
   const { data } = await blogService.getBlogPost(
     {
-      isFeatured: true,
+      isFeatured: false,
     },
     {
       cache: "no-store",
-      revalidate: 10,
+      // revalidate: 10,
     },
   );
 
