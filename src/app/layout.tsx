@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/layouts/navbar";
 import { ThemeProvider } from "next-themes";
 import { Suspense } from "react";
 import Loading from "./loading";
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -81,10 +81,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body
-        className="h-screen font-sans"
-        suppressHydrationWarning
-      >
+      <body className="h-screen font-sans" suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -95,6 +92,7 @@ export default function RootLayout({
           <Suspense fallback={<Loading />}>
             <main className="h-full flex-1">
               {children}
+              <Toaster richColors />
             </main>
           </Suspense>
         </ThemeProvider>
