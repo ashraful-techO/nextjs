@@ -20,7 +20,7 @@ export default async function Home() {
     },
   );
 
-  console.log(data?.data);
+  // console.log(data?.data);
 
   return (
     <div className="grid grid-cols-3 mx-auto max-w-7xl gap-3">

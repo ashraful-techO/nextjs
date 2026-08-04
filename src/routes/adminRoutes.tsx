@@ -11,14 +11,4 @@ export const adminRoutes: Route[] = [
       },
     ],
   },
-    {
-    title: "🏠",
-    items:[
-      {
-        title: "Test",
-        url: "/test",
-        isActive: true,
-      }
-    ]
-  }
 ];

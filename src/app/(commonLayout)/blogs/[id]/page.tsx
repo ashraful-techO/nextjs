@@ -8,7 +8,7 @@ export const dynamicParams = true; //if i dont need dynamic route without genera
 
 export async function generateStaticParams() {
   const { data } = await blogService.getBlogPost();
-  console.log("generateStaticParams response:", data);
+  // console.log("generateStaticParams response:", data);
 
   return data?.data?.map((blog: BlogPost) => ({ id: blog.id })).splice(0, 3);
 }

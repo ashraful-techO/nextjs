@@ -27,7 +27,7 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
   }
 
-  console.log({ data });
+  // console.log({ data });
 
   return NextResponse.next();
 }

@@ -47,7 +47,7 @@ export function RegisterForm({ ...props }: React.ComponentProps<typeof Card>) {
       onSubmit: formSchema,
     },
     onSubmit: async ({ value }) => {
-      console.log(value);
+      // console.log(value);
       const toastId = toast.loading("Creating user");
       try {
         const { data, error } = await authClient.signUp.email(value);
