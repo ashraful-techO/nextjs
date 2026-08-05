@@ -10,7 +10,9 @@ import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { env } from "@/env";
+import { revalidateTag, updateTag } from "next/cache";
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import React from "react";
 
 const API_URL = env.API_URL;
@@ -19,7 +21,6 @@ function CreateBlogFormServer() {
   const createBlog = async (formData: FormData) => {
     "use server";
 
-    // console.log(formData.get("title"));
     const title = formData.get("title") as string;
     const content = formData.get("content") as string;
     const tags = formData.get("tags") as string;
@@ -43,9 +44,12 @@ function CreateBlogFormServer() {
       },
       body: JSON.stringify(blogData),
     });
-    console.log(res);
-  };
 
+    if (res.ok) {
+      // revalidateTag("blogPosts", "max");
+      updateTag("blogPosts"); // Use either one of them
+    }
+  };
   return (
     <Card className="max-w-2xl mx-auto ">
       <CardHeader>
