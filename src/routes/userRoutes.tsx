@@ -9,6 +9,11 @@ export const userRoutes: Route[] = [
         url: "/dashboard/create-blog",
         isActive: true,
       },
+      {
+        title: "History",
+        url: "/history",
+        isActive: true,
+      },
     ],
   },
 ];

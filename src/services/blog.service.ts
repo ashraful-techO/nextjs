@@ -13,6 +13,7 @@ interface ServiceOptions {
 interface GetBlogsParams {
   isFeatured?: boolean;
   search?: string;
+  page?: string;
 }
 
 interface BlogData {
